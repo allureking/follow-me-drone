@@ -1,0 +1,48 @@
+# Follow-Me Drone Configuration
+
+drone:
+  frame_width: 960
+  frame_height: 720
+  height_limit: 220          # cm, indoor ceiling protection
+  takeoff_ascent_speed: 25   # cm/s upward after takeoff
+  takeoff_ascent_duration: 3.0  # seconds
+
+tracking:
+  pid:
+    kp: 0.2
+    ki: 0.04
+    kd: 0.005
+  face_area_min: 14000       # target face area range (pixels^2)
+  face_area_max: 15000
+  yaw_speed_limit: 100
+  vertical_speed_limit: 40
+  vertical_speed_scale: 0.5
+  forward_speed: 20
+  backward_speed: -20
+  target_x_fraction: 0.5     # horizontal target: center
+  target_y_fraction: 0.25    # vertical target: upper quarter
+  lost_face_threshold: 15    # frames before searching
+  search_rotation_speed: 40  # deg/s when searching
+  loop_interval: 0.1         # seconds between control loops
+
+face_detection:
+  cascade_path: "models/haarcascade_frontalface_default.xml"
+  scale_factor: 1.2
+  min_neighbors: 8
+  center_history_size: 20
+
+circle_motion:
+  speed: -15
+  yaw_speed: 35
+  duration: 20
+  video_fps: 30
+
+gesture:
+  serial_port: "/dev/ttyUSB0"
+  baud_rate: 38400
+  snap_threshold: 50000
+  snap_time_window: 0.7      # seconds between snaps in a sequence
+  max_sensor_buffer: 1000
+
+ipc:
+  cache_file: "cache.pkl"
