@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "follow-me-drone"
+version = "1.0.0"
+description = "Autonomous follow-me selfie drone with face tracking and gesture control"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "allureking", email = "kingke0927@gmail.com"},
+]
+dependencies = [
+    "opencv-python>=4.8.0",
+    "djitellopy>=2.5",
+    "numpy>=1.24.0",
+    "pyserial>=3.5",
+    "pyyaml>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/allureking/follow-me-drone"
+
+[tool.setuptools.packages.find]
+include = ["followme*"]
